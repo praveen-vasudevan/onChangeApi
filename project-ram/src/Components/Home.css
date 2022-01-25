@@ -1,0 +1,56 @@
+.home-container{
+    height: 100vh;
+    width: 100wh;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.type-container,
+.location-container,
+.button-container{
+    min-height: 12vh;
+    width: 100%;
+}
+
+.suggestion-container{
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+
+.type,
+.location,
+.suggestion,
+.search{
+    height: 10vh;
+    width: 100%;
+}
+
+.type,
+.location{
+    padding: 2%;
+}
+
+.suggestion{
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.suggestion:hover{
+    background-color: rgb(233, 233, 233);
+}
+
+.search{
+    background-color: rgb(45, 146, 230);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.search:hover {
+    background-color: rgb(20, 130, 219);
+}
