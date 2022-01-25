@@ -80,6 +80,7 @@ const Home = () => {
                 
             />
             <div className="suggestion-container">
+                
                 <div className="suggestion"></div>
                 <div className="suggestion"></div>
                 <div className="suggestion"></div>
