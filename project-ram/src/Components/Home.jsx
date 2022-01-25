@@ -5,6 +5,8 @@ import '../Components/Home.css';
 
 const Home = () => {
 
+    let response
+
     const[location, setLocation] = useState('')
     const[type, setType] = useState('')
     const[submit, setSubmit] = useState(false)
@@ -15,7 +17,7 @@ const Home = () => {
         if(submit){
 
             const fetchData = async () => {
-                const response = await axios.get(``)
+                response = await axios.get(``)
                 .catch(err => {
                     console.log("err: " + err)
                 })
@@ -24,7 +26,7 @@ const Home = () => {
         else{
             
             const fetchData = async () => {
-                const response = await axios.get(``)
+                response = await axios.get(``)
                 .catch(err => {
                     console.log("err: " + err)
                 })
@@ -79,8 +81,11 @@ const Home = () => {
             />
             <div className="suggestion-container">
                 <div className="suggestion"></div>
-                {/* <div className="suggestion"></div>
-                <div className="suggestion"></div> */}
+                <div className="suggestion"></div>
+                <div className="suggestion"></div>
+                <div className="suggestion"></div>
+                <div className="suggestion"></div>
+                <div className="suggestion"></div>
        
             </div>
                 
