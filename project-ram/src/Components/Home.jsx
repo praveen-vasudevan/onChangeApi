@@ -32,8 +32,7 @@ const Home = () => {
         })
 
         setDatas(response.data)
-        console.log('after submission')
-        console.log(datas)
+        console.log('Form submitted...')
 
     }
 
@@ -51,8 +50,8 @@ const Home = () => {
         })
 
         setSuggestions(response.data)
-        console.log("after fetching...")
-        console.log(suggestions)
+        console.log("Fetching data for suggestions...")
+
     }
 
     /*
@@ -64,13 +63,11 @@ const Home = () => {
         if(submit){
 
             submitData()
-            console.log('submitted')
         
         }
         else if(location !== ''){
             
             fetchData()
-            console.log('fetching...')
            
         }
         else{
@@ -94,6 +91,7 @@ const Home = () => {
     //This function will change location value by suggested value(which is clicked by the user)
     const onClickHandlerSuggestion = (e) => {
         setLocation(e.target.innerHTML)
+        console.log('Location value changed...')
     }
 
     //This function is for form validation and submission. It will change the 'submit-state' as true.
@@ -138,7 +136,7 @@ const Home = () => {
             />
             <div className="suggestion-container">
                 {
-                    //This is where we are rendering the suggested locations. If the suggestion is null
+                    //This is where we are rendering the suggested locations. If the suggestions are null
                     //we render nothing... 
                     (suggestions !== [])?  suggestions.map(suggestion => (
 
