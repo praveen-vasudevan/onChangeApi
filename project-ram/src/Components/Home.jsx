@@ -5,35 +5,57 @@ import '../Components/Home.css';
 
 const Home = () => {
 
-    let response
+    const[datas, setDatas] = useState([]);
+    const[suggestions, setSuggestions] = useState([]);
 
     const[location, setLocation] = useState('')
     const[type, setType] = useState('')
     const[submit, setSubmit] = useState(false)
+    
 
+    const submitData = async () => {
+
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
+        .catch(err => {
+            console.log("err: " + err)
+        })
+
+        setDatas(response.data)
+        console.log('after submission')
+        console.log(datas)
+
+    }
+
+    const fetchData = async () => {
+
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
+        .catch(err => {
+            console.log("err: " + err)
+        })
+
+        setSuggestions(response.data)
+        console.log("after fetching...")
+        console.log(suggestions)
+    }
 
     useEffect(() => {
 
         if(submit){
 
-            const fetchData = async () => {
-                response = await axios.get(``)
-                .catch(err => {
-                    console.log("err: " + err)
-                })
-            }
+            submitData()
+            console.log('submitted')
+        
+        }
+        else if(location !== ''){
+            
+            fetchData()
+            console.log('fetching...')
+           
         }
         else{
-            
-            const fetchData = async () => {
-                response = await axios.get(``)
-                .catch(err => {
-                    console.log("err: " + err)
-                })
-            }
+            setSuggestions([])
         }
 
-      console.log('useeffect')
 
     }, [location, submit]);
 
@@ -46,10 +68,20 @@ const Home = () => {
         setType(e.target.value)
     }
 
+    const onClickHandlerSuggestion = (e) => {
+        setLocation(e.target.innerHTML)
+    }
+
     const submitEventHandler = (e) => {
         e.preventDefault()
 
         type === '' || location === '' ? window.alert('Fill the form properly') : setSubmit(true)
+
+
+        console.log({
+            type: type,
+            location: location
+        })
         
     }
     
@@ -80,18 +112,17 @@ const Home = () => {
                 
             />
             <div className="suggestion-container">
-                
-                <div className="suggestion"></div>
-                <div className="suggestion"></div>
-                <div className="suggestion"></div>
-                <div className="suggestion"></div>
-                <div className="suggestion"></div>
-                <div className="suggestion"></div>
+                {
+                    (suggestions !== [])?  suggestions.map(suggestion => (
+
+                        <div onClick={onClickHandlerSuggestion}  key = {suggestion.id} className="suggestion">{suggestion.userId}</div>
+                    
+                    )) : {}
+                    
+                }
        
             </div>
-                
-
-            
+                 
         </div>
         
         <div className="button-container">
